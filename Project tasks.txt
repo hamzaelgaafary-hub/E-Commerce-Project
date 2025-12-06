@@ -1,0 +1,46 @@
+
+What we have to do:-
+- Make a login and register page
+- Make a database for the shop and use it to store products and users
+- Make a page to show the products and a page to show the products detail
+- Make a page to add products to the cart
+- Make a page to show the cart and use the database to count the total price of the items in the cart
+- Make a page to checkout and use the database to save the order
+- Make a page to show the orders and use the database to show the order details
+- Make a page to edit the profile and use the database to update the user data
+- Make a page to delete the profile and use the database to delete the user data
+- Make a page for the admin to manage the products and the orders
+- Use CSS to make the website visually pleasing
+- Use JavaScript to make the website interactive
+- Test the website on multiple devices and browsers to check for bugs and compatibility issues
+- Optimize the website for speed and performance
+- Get feedback from users and make improvements to the website based on user feedback
+- Deploy the website on a server and make it accessible to the public
+- Document the code and database structure for future reference
+
+
+
+what we done :-
+
+* Made a login and register page
+* Made a database for the shop and used it to store products and users
+* Made a page to show the products and a page to show the products detail
+* Made a page to add products to the cart
+* Made a page to show the cart and used the database to count the total price of the items in the cart
+
+
+
+what we have to do next : -
+
+- Make a page to checkout and use the database to save the order
+- Make a page to show the orders and use the database to show the order details
+- Make a page to edit the profile and use the database to update the user data
+- Make a page to delete the profile and use the database to delete the user data
+- Make a page for the admin to manage the products and the orders
+- Use CSS to make the website visually pleasing
+- Use JavaScript to make the website interactive
+- Test the website on multiple devices and browsers to check for bugs and compatibility issues
+- Optimize the website for speed and performance
+- Get feedback from users and make improvements to the website based on user feedback
+- Deploy the website on a server and make it accessible to the public
+- Document the code and database structure for future reference
