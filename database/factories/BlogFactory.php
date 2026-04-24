@@ -23,8 +23,8 @@ class BlogFactory extends Factory
             "content" => fake()->paragraph(10),
             "slug" => fake()->slug(),
             "image" => fake()->imageUrl(640, 480, 'blog', true),
-            "category_id" => category::factory(),
-            "user_id" => user::factory(),
+            "category_id" => category::inRandomOrder()->first()?->id ?? category::factory(),
+            "user_id" => User::inRandomOrder()->first()?->id ?? User::factory(),
         ];
     }
 }

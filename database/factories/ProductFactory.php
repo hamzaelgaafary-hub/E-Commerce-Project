@@ -21,9 +21,9 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         //لاستدعاء القيم من قاعدة البيانات دون انتاج جديد بشرط الوجود فعلا 
-        $categoryIds = Category::pluck('id')->toArray();
-        $userIds = User::pluck('id')->toArray();
-
+        
+        //$categoryIds = Category::pluck('id')->toArray();
+        //$userIds = User::pluck('id')->toArray();
         return [
             'name' => $this->faker->jobTitle(),
             'price' => $this->faker->randomFloat(2, 1, 1000),
@@ -33,8 +33,8 @@ class ProductFactory extends Factory
             'image' => $this->faker->image(),
             'short_description' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'user_id' => $this->faker->randomElement($userIds),
-            'category_id' => $this->faker->randomElement($categoryIds),
+            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
+            'category_id' => Category::inRandomOrder()->first()?->id ?? Category::factory(),
         ];
     }
 }

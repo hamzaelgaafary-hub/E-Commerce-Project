@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\Role;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Review;
@@ -30,7 +29,7 @@ class User extends Authenticatable
         'phone',
         'location',
         'password',
-        'role_id',
+        'role',
     ];
 
     /**
@@ -54,11 +53,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function role(): BelongsTo
-    {
-        return $this->belongsTo(Role::class);
     }
 
     /**

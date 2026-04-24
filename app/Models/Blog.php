@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\category;
 use App\Models\User;
 
-class blog extends Model
+class Blog extends Model
 {
     /** @use HasFactory<\Database\Factories\BlogFactory> */
     use HasFactory;

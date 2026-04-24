@@ -33,6 +33,7 @@ class CategoryFactory extends Factory
                 'Office Supplies',
                 'Grocery & Gourmet Food'
             ]),
+            
             'description' => $this->faker->sentence(),
         ];
     }
