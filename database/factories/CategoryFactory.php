@@ -35,6 +35,8 @@ class CategoryFactory extends Factory
             ]),
             
             'description' => $this->faker->sentence(),
+            'slug' => $this->faker->unique()->slug(),
+            'is_active' => $this->faker->boolean(80), // 80% chance to be active
         ];
     }
 }

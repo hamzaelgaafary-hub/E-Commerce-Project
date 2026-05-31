@@ -8,8 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\role;
-use App\Models\user;
+use App\Models\Role;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -30,12 +30,12 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // Check if the authenticated user is a merchant
-        if (auth()->user()->role->name == 'merchant') {
+        // Check if the authenticated User is a merchant
+        if (auth::User()->role_id == 2 ) {
             return redirect()->intended(route('merchant.dashboard', absolute: false));
         }
 
-        // Default redirect for regular users
+        // Default redirect for regular Users
         return redirect()->intended(route('dashboard', absolute: false));
 
     }

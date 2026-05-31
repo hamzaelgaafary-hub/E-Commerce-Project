@@ -1,0 +1,85 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Layout turkish Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used during layout for various
+    | messages that we need to display to the user. You are free to modify
+    | these language lines according to your application's requirements.
+    |
+    */
+    'home_page' => 'ana sayfa',
+    'shop' => 'mağaza',
+    'Blogs_&_Posts' => 'bloglar ve gönderiler',
+    'contact' => 'iletişime geçin',
+    'login' => 'giriş yap',
+    'register' => 'hesap oluştur',
+    'logout' => 'çıkış yap',
+    'dashboard' => 'kontrol paneli',
+    'merchant.products' => 'satıcı ürünleri',
+    'merchant.blogs' => 'satıcı blogları',
+    'cart' => 'sepetteki ürünler',
+    'orders' => 'siparişler',
+    'profile' => 'Profil bilgileri',
+    'admin_panel' => 'yönetici paneli',
+    'welcome' => 'Çevrimiçi mağazamıza hoş geldiniz',
+    'products' => 'ürünler',
+    'categories' => 'kategoriler',
+    'blog' => 'blog',
+    'about_us' => 'hakkımızda',
+    'All_Blogs' => 'tüm bloglar',
+    'All_Products' => 'tüm ürünler',
+    'All_Categories' => ' tüm kategoriler',
+    'search' => 'arama',
+    'Items' => 'öğeler',
+    'Total' => 'toplam',
+    'Shop' => 'mağaza',
+    'New' => 'yeni',
+    'View Cart' => 'sepetteki ürünleri görüntüle',
+    'checkout' => 'ödeme',
+    'my_account' => 'hesabım',
+    'my_orders' => 'siparişlerim',
+    'my_profile' => 'profilim', 
+    'Customer_Dashboard' => 'müşteri kontrol paneli',
+    'Merchant_Dashboard' => 'satıcı kontrol paneli',
+    'Admin_Dashboard' => 'yönetici kontrol paneli',
+    'User_Dashboard' => 'kullanıcı kontrol paneli',
+    'Welcome_to_your_dashboard' => 'kontrol panelinize hoş geldiniz',
+    'Information' => 'bilgiler',
+    'Name' => 'İsim',
+    'Email' => 'E-posta',
+    'Phone' => 'Telefon',
+    'Address' => 'Adres',
+    'Edit_Profile' => 'Profili Düzenle',
+    'Change_Password' => 'Şifre Değiştir',
+    'Old_Password' => 'Eski Şifre',
+    'New_Password' => 'Yeni Şifre',
+    'Confirm_Password' => 'Şifreyi Onayla',
+    'Save' => 'Kaydet',
+    'Cancel' => 'İptal',
+    'Newsletter' => 'Haber Bülteni',
+    'Subscribe_to_our_newsletter' => 'Haber Bültenimize Abone Olun',
+    'Enter_your_email' => 'E-posta adresinizi girin',
+    'Subscribe' => 'Abone Ol',
+    'choose_language' => 'Dil Seç',
+    'daily_deal' => 'Günlük fırsat',
+    'free_shipping' => 'Ücretsiz Kargo',
+    'orders_over' => '100$ üzerindeki siparişler',
+    'search_here' => 'Burada Ara...',
+    'all_categories' => 'Tüm Kategoriler',
+    'search_products_here' => 'Ürünleri burada ara...',
+    'customer_service' => 'Müşteri Hizmetleri',
+    'payment_methods' => 'Ödeme Yöntemleri',
+    'money_back' => 'Para iadesi',
+    'returns' => 'İadeler',
+    'shipping' => 'Nakliye',
+    'privacy_policy' => 'Gizlilik Politikası',
+    'get_in_touch' => 'İletişime Geçin',
+    'copyright' => 'Telif Hakkı © 2020 Wpthemesgrid - Tüm Hakları Saklıdır.',
+    'You Are logged in!' => 'Giriş yaptınız!',
+
+
+];

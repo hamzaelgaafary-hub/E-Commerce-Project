@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $products = Auth::user()->products()->latest()->paginate(10);
         //dd($products);
-        return view('merchant.dashboard', compact('products'));
+        return view('merchant.products.index', compact('products'));
     }
     /**
      * Show the form for creating a new resource.
@@ -56,7 +56,7 @@ class ProductController extends Controller
             'image' => $request->image,
         ]);
         // 4. Redirect to the dashboard with a success message
-        return redirect()->route('merchant.dashboard')->with('success', 'Product created successfully!');
+        return redirect()->route('merchant.products.index')->with('success', 'Product created successfully!');
     }
 
     /**
@@ -123,7 +123,7 @@ class ProductController extends Controller
 
     $product->update($validated);
 
-    return redirect()->route('merchant.dashboard')
+    return redirect()->route('merchant.products.index')
         ->with('success', 'Product updated successfully');
 }
     /**
@@ -138,7 +138,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('merchant.dashboard')
+        return redirect()->route('merchant.products.index')
                         ->with('success', 'Product deleted successfully!');
     }
 }

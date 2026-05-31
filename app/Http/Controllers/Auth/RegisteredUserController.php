@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Cache;
 
 class RegisteredUserController extends Controller
 {
@@ -20,8 +21,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $roles = Role::where('name', '!=', 'admin')->get();
-        return view('auth.register', compact('roles'));
+        $roles = Cache::remember('assignable_roles', now()->addDay(), fn() =>
+        Role::assignable()->get()
+    );
+
+    return view('auth.register', compact('roles'));
     }
 
     /**
@@ -50,9 +54,11 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+
         event(new Registered($user));
 
         Auth::login($user);
+        //dd($user ) ;
 
         return redirect(route('index', absolute: false));
     }

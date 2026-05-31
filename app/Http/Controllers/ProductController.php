@@ -5,32 +5,55 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Illuminate\View\View;
+use Illuminate\Database\Eloquent\Builder;
 class ProductController extends Controller
 {
     /**
+     * Scope a query to only include trending products.
+     */
+    public function scopeTrending(Builder $query): Builder
+    {
+        return $query->where('trend', 1);
+    }
+    /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Category $category): View
     {
         $categories = Category::all();
-        $products = Product::with('category')->latest()->cursorPaginate(5);
-        
-        return view('site.products', compact('products', 'categories'));
-    }
 
+        $products = Product::with('category')
+                    ->latest()
+                    ->cursorPaginate(5);
+       $trendingProducts = Product::query()
+            ->where('trend', 1)
+            ->with('category')
+            ->get()
+            ->groupBy('category_id');
+        $categories = Category::with(['products' => function ($query) {
+            $query->where('trend', 1);
+        }])->get();
+        //dd($categories);
+        //dd($trendingProducts);
+        
+        return view('site.products', compact('products', 'categories', 'trendingProducts'));
+    }
+    
     /**
      * Display a single category.
      */
-
-        public function category($id)
-        {
-            $categories = Category::all();
-            $products = Product::where('category_id', $id)->with('category')->latest()->cursorPaginate(5);
-
-            return view('site.category', compact('products', 'categories'));
-        }
-
+    public function category($id)
+    {
+        $categories = Category::all();
+        $products = Product::query()
+                        ->where('category_id', $id)
+                        ->with('category')
+                        ->latest()
+                        ->cursorPaginate(5);
+dd($products);
+        return view('site.category', compact('products', 'categories'));
+    }
     /**
      * Display a single product
      */

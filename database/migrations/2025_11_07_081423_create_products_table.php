@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('trend')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->decimal('price', 10, 2);
             $table->integer('qty');
             $table->string('image')->nullable();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->foreignId('user_id')->comment('Merchant ID')->constrained('users');
             // Foreign key to the 'categories' table
             $table->foreignId('category_id')->constrained('categories');
+            $table->index(['category_id', 'trend', 'is_active']);
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\blog;
+use App\Models\Blog;
 use App\Models\Category;
 
 class blogsController extends Controller
@@ -20,7 +20,7 @@ class blogsController extends Controller
      */
     public function index()
     {
-        $blogs = blog::latest()->cursorPaginate(5);
+        $blogs = Blog::latest()->cursorPaginate(5);
         //dd($blogs);
         return view('site.blogs.index', compact('blogs'));
     }

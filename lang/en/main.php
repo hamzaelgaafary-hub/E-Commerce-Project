@@ -1,0 +1,163 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Main Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used throughout the application for various
+    | messages that we need to display to the user.
+    |
+    */
+
+    // Home Page
+    'hero_title' => 'UP TO 50% OFF Best of bests',
+    'hero_description' => 'Find the best products at the best prices',
+    'shop_now' => 'Shop Now!',
+    'special_offer' => 'Special Offer Item',
+    'up_to' => 'Up to',
+    'shop_now_small' => 'Shop Now',
+    'free_shipping' => 'Free Shipping',
+    'orders_over' => 'Orders over $100',
+    'free_return' => 'Free Return',
+    'within_days' => 'Within 30 days returns',
+    'secure_payment' => 'Secure Payment',
+    'secure_payment_desc' => '100% secure payment',
+    'best_price' => 'Best Price',
+    'guaranteed_price' => 'Guaranteed price',
+    'newsletter' => 'Newsletter',
+    'newsletter_desc' => 'Subscribe to our newsletter and get 10% off your first purchase',
+    'email_placeholder' => 'Your email address',
+    'subscribe' => 'Subscribe',
+    'template_title' => 'Eshop Free Lite',
+    'template_desc' => 'Currently You are using free lite Version of Eshop.',
+    'template_note' => 'Please, purchase full version of the template to get all pages, features and commercial license',
+    'buy_now' => 'Buy Now!',
+
+    // Products Page
+    'trending_item' => 'Trending Item',
+    'all_products' => 'All Products',
+    'quick_shop' => 'Quick Shop',
+    'add_to_wishlist' => 'Add to Wishlist',
+    'compare' => 'Compare',
+    'add_to_cart' => 'Add to Cart',
+    'no_trending_products' => 'No trending products found in this category.',
+    'add_to_compare' => 'Add to Compare',
+
+    // Cart Page
+    'shopping_cart' => 'Shopping Cart',
+    'product' => 'Product',
+    'price' => 'Price',
+    'quantity' => 'Quantity',
+    'subtotal' => 'Subtotal',
+    'action' => 'Action',
+    'update' => 'Update',
+    'total' => 'Total',
+    'proceed_to_checkout' => 'Proceed to Checkout',
+    'cart_empty' => 'Shopping cart is currently empty.',
+
+    // Checkout Page
+    'checkout' => 'Checkout',
+    'shipping_information' => 'Shipping Information',
+    'first_name' => 'First Name',
+    'last_name' => 'Last Name',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'address' => 'Address',
+    'city' => 'City',
+    'payment_method' => 'Payment Method',
+    'cash_on_delivery' => 'Cash on Delivery',
+    'confirm_order_and_pay' => 'Confirm Order and Pay',
+    'login' => 'Login',
+    'cancel' => 'Cancel',
+    'order_summary' => 'Order Summary',
+    'shipping_cost' => 'Shipping Cost',
+    'final_total' => 'Final Total',
+
+    // About/Contact Pages
+    'get_in_touch' => 'Get in touch',
+    'write_us_message' => 'Write us a message',
+    'your_name' => 'Your Name',
+    'your_subjects' => 'Your Subjects',
+    'your_message' => 'Your Message',
+    'send_message' => 'Send Message',
+    'call_us_now' => 'Call us Now:',
+    'our_address' => 'Our Address:',
+
+    // Search Page
+    'search_products_placeholder' => 'Search products here...',
+    'search_results_for' => 'Search results for:',
+    'found_results' => 'Found :count results.',
+    'popular' => 'Popular',
+    'regular' => 'Regular',
+    'quick_view' => 'Quick View',
+    'wishlist' => 'Wishlist',
+    'currency' => '$',
+    'no_product_found' => 'No product found matching ":query".',
+    'enter_search_word' => 'Please enter a word to search for products.',
+
+    // Blogs Page
+    'by' => 'By',
+    'comment' => 'Comment',
+    'tags' => 'Tags:',
+    'search_here' => 'Search Here...',
+    'blog_categories' => 'Blog Categories',
+    'recent_blogs' => 'Recent blogs',
+
+    // Auth Pages
+    'password_field' => 'Password',
+    'remember_me' => 'Remember me',
+    'forgot_password' => 'Forgot your password?',
+    'log_in' => 'Log in',
+    'register' => 'Register',
+    'name' => 'Name',
+    'confirm_password' => 'Confirm Password',
+
+    // Layout
+    'home_page' => 'Home Page',
+    'shop' => 'Shop',
+    'blogs_posts' => 'Blogs & Posts',
+    'contact' => 'Contact Us',
+    'logout' => 'Logout',
+    'dashboard' => 'Dashboard',
+    'cart' => 'Cart',
+    'orders' => 'Orders',
+    'profile' => 'Profile',
+    'admin_panel' => 'Admin Panel',
+    'welcome' => 'Welcome to our online store',
+    'products' => 'Products',
+    'categories' => 'Categories',
+    'blog' => 'Blog',
+    'about_us' => 'About Us',
+    'all_blogs' => 'All Blogs',
+    'all_categories' => 'All Categories',
+    'search' => 'Search',
+    'items' => 'Items',
+    'view_cart' => 'View Cart',
+    'my_account' => 'My Account',
+    'my_orders' => 'My Orders',
+    'my_profile' => 'My Profile',
+    'customer_dashboard' => 'Customer Dashboard',
+    'merchant_dashboard' => 'Merchant Dashboard',
+    'admin_dashboard' => 'Admin Dashboard',
+    'user_dashboard' => 'User Dashboard',
+    'welcome_to_dashboard' => 'Welcome to your dashboard',
+    'information' => 'Information',
+    'phone' => 'Phone',
+    'edit_profile' => 'Edit Profile',
+    'change_password' => 'Change Password',
+    'old_password' => 'Old Password',
+    'new_password' => 'New Password',
+    'save' => 'Save',
+    'customer_service' => 'Customer Service',
+    'payment_methods' => 'Payment Methods',
+    'money_back' => 'Money-back',
+    'returns' => 'Returns',
+    'shipping' => 'Shipping',
+    'privacy_policy' => 'Privacy Policy',
+    'get_in_touch' => 'Get In Touch',
+    'copyright' => 'Copyright © 2020 Wpthemesgrid - All Rights Reserved.',
+    'choose_language' => 'Choose Language',
+    'daily_deal' => 'Daily deal',
+];

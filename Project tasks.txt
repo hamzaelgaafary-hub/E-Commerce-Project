@@ -22,11 +22,13 @@ What we have to do:-
 
 what we done :-
 
-* Made a login and register page
+* Made a login and register page (done)
+
 * Made a database for the shop and used it to store products and users
 * Made a page to show the products and a page to show the products detail
 * Made a page to add products to the cart
 * Made a page to show the cart and used the database to count the total price of the items in the cart
+
 
 
 

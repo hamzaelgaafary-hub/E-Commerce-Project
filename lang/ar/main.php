@@ -1,0 +1,163 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Main Language Lines - Arabic
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used throughout the application for various
+    | messages that we need to display to the user.
+    |
+    */
+
+    // Home Page
+    'hero_title' => 'خصم يصل إلى 50% على أفضل المنتجات',
+    'hero_description' => 'اعثر على أفضل المنتجات بأفضل الأسعار',
+    'shop_now' => 'تسوق الآن!',
+    'special_offer' => 'عنصر عرض خاص',
+    'up_to' => 'يصل إلى',
+    'shop_now_small' => 'تسوق الآن',
+    'free_shipping' => 'شحن مجاني',
+    'orders_over' => 'الطلبات فوق 100 دولار',
+    'free_return' => 'إرجاع مجاني',
+    'within_days' => 'إرجاع خلال 30 يومًا',
+    'secure_payment' => 'دفع آمن',
+    'secure_payment_desc' => 'دفع آمن 100%',
+    'best_price' => 'أفضل سعر',
+    'guaranteed_price' => 'سعر مضمون',
+    'newsletter' => 'النشرة الإخبارية',
+    'newsletter_desc' => 'اشترك في نشرتنا الإخبارية واحصل على خصم 10% على عملية الشراء الأولى',
+    'email_placeholder' => 'عنوان بريدك الإلكتروني',
+    'subscribe' => 'اشترك',
+    'template_title' => 'إيشوب مجاني لايت',
+    'template_desc' => 'أنت تستخدم حاليًا النسخة المجانية الخفيفة من إيشوب.',
+    'template_note' => 'يرجى شراء النسخة الكاملة من القالب للحصول على جميع الصفحات والميزات والترخيص التجاري',
+    'buy_now' => 'اشترِ الآن!',
+
+    // Products Page
+    'trending_item' => 'عنصر رائج',
+    'all_products' => 'جميع المنتجات',
+    'quick_shop' => 'تسوق سريع',
+    'add_to_wishlist' => 'أضف إلى قائمة الرغبات',
+    'compare' => 'قارن',
+    'add_to_cart' => 'أضف إلى السلة',
+    'no_trending_products' => 'لم يتم العثور على منتجات رائجة في هذه الفئة.',
+    'add_to_compare' => 'أضف للمقارنة',
+
+    // Cart Page
+    'shopping_cart' => 'سلة التسوق',
+    'product' => 'المنتج',
+    'price' => 'السعر',
+    'quantity' => 'الكمية',
+    'subtotal' => 'المجموع الفرعي',
+    'action' => 'الإجراء',
+    'update' => 'تحديث',
+    'total' => 'المجموع الكلي',
+    'proceed_to_checkout' => 'المتابعة إلى الدفع',
+    'cart_empty' => 'سلة التسوق فارغة حاليًا.',
+
+    // Checkout Page
+    'checkout' => 'الخروج',
+    'shipping_information' => 'معلومات الشحن',
+    'first_name' => 'الاسم الأول',
+    'last_name' => 'الاسم الأخير',
+    'email' => 'البريد الإلكتروني',
+    'phone' => 'الهاتف',
+    'address' => 'العنوان',
+    'city' => 'المدينة',
+    'payment_method' => 'طريقة الدفع',
+    'cash_on_delivery' => 'الدفع عند الاستلام',
+    'confirm_order_and_pay' => 'تأكيد الطلب والدفع',
+    'login' => 'تسجيل الدخول',
+    'cancel' => 'إلغاء',
+    'order_summary' => 'ملخص الطلب',
+    'shipping_cost' => 'تكلفة الشحن',
+    'final_total' => 'الإجمالي النهائي',
+
+    // About/Contact Pages
+    'get_in_touch' => 'تواصل معنا',
+    'write_us_message' => 'اكتب لنا رسالة',
+    'your_name' => 'اسمك',
+    'your_subjects' => 'مواضيعك',
+    'your_message' => 'رسالتك',
+    'send_message' => 'إرسال الرسالة',
+    'call_us_now' => 'اتصل بنا الآن:',
+    'our_address' => 'عنواننا:',
+
+    // Search Page
+    'search_products_placeholder' => 'ابحث عن المنتجات هنا...',
+    'search_results_for' => 'نتائج البحث لـ:',
+    'found_results' => 'تم العثور على :count نتائج.',
+    'popular' => 'رائج',
+    'regular' => 'إعتيادي',
+    'quick_view' => 'عرض سريع',
+    'wishlist' => 'المفضلة',
+    'currency' => 'درهم',
+    'no_product_found' => 'لم يتم العثور على منتج يطابق ":query".',
+    'enter_search_word' => 'يرجى إدخال كلمة للبحث عن المنتجات.',
+
+    // Blogs Page
+    'by' => 'بواسطة',
+    'comment' => 'تعليق',
+    'tags' => 'العلامات:',
+    'search_here' => 'ابحث هنا...',
+    'blog_categories' => 'فئات المدونة',
+    'recent_blogs' => 'المدونات الحديثة',
+
+    // Auth Pages
+    'password_field' => 'كلمة المرور',
+    'remember_me' => 'تذكرني',
+    'forgot_password' => 'نسيت كلمة المرور؟',
+    'log_in' => 'تسجيل الدخول',
+    'register' => 'إنشاء حساب',
+    'name' => 'الاسم',
+    'confirm_password' => 'تأكيد كلمة المرور',
+
+    // Layout
+    'home_page' => 'الصفحة الرئيسية',
+    'shop' => 'المتجر',
+    'blogs_posts' => 'المدونات والمنشورات',
+    'contact' => 'اتصل بنا',
+    'logout' => 'تسجيل الخروج',
+    'dashboard' => 'لوحة التحكم',
+    'cart' => 'السلة',
+    'orders' => 'الطلبات',
+    'profile' => 'الملف الشخصي',
+    'admin_panel' => 'لوحة الإدارة',
+    'welcome' => 'مرحبًا بك في متجرنا الإلكتروني',
+    'products' => 'منتجات',
+    'categories' => 'فئات',
+    'blog' => 'المدونة',
+    'about_us' => 'من نحن',
+    'all_blogs' => 'جميع المدونات',
+    'all_categories' => 'جميع الفئات',
+    'search' => 'بحث',
+    'items' => 'العناصر',
+    'view_cart' => 'عرض السلة',
+    'my_account' => 'حسابي',
+    'my_orders' => 'طلباتي',
+    'my_profile' => 'ملفي الشخصي',
+    'customer_dashboard' => 'لوحة تحكم العميل',
+    'merchant_dashboard' => 'لوحة تحكم التاجر',
+    'admin_dashboard' => 'لوحة تحكم المدير',
+    'user_dashboard' => 'لوحة تحكم المستخدم',
+    'welcome_to_dashboard' => 'مرحبًا بك في لوحة التحكم الخاصة بك',
+    'information' => 'المعلومات',
+    'phone' => 'الهاتف',
+    'edit_profile' => 'تعديل الملف الشخصي',
+    'change_password' => 'تغيير كلمة المرور',
+    'old_password' => 'كلمة المرور القديمة',
+    'new_password' => 'كلمة المرور الجديدة',
+    'save' => 'حفظ',
+    'customer_service' => 'خدمة العملاء',
+    'payment_methods' => 'طرق الدفع',
+    'money_back' => 'استرداد الأموال',
+    'returns' => 'الإرجاع',
+    'shipping' => 'الشحن',
+    'privacy_policy' => 'سياسة الخصوصية',
+    'get_in_touch' => 'تواصل معنا',
+    'copyright' => 'حقوق النشر © 2020 Wpthemesgrid - جميع الحقوق محفوظة.',
+    'choose_language' => 'اختر اللغة',
+    'daily_deal' => 'العرض اليومي',
+];

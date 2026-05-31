@@ -20,5 +20,12 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+    /**
+     * Get the blogs in this category.
+     */
+    public function blogs(): HasMany
+    {
+        return $this->hasMany(Blog::class);
+    }   
 
 }

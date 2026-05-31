@@ -4,79 +4,104 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Services\CartService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\View\View;
+use InvalidArgumentException;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\RedirectResponse;
+
 
 class CartController extends Controller
 {
-    /**
-     * يعرض محتويات السلة.
-     */
-    public function index()
+/* *****************useing seetion ************
+    to store cart data for guest users, and when user login we will merge session cart with database cart******* 
+   
+    public function add(Request $request, Product $product): RedirectResponse
     {
-        // استرجاع السلة من الجلسة (إذا لم تكن موجودة، تكون مصفوفة فارغة)
+        $request->validate([
+            'qty' => ['required', 'integer', 'min:1', "max:{$product->qty}"],
+        ]);
+
+        $qty  = (int) $request->qty;
         $cart = session()->get('cart', []);
+        $id   = $product->id;
 
-        // تمرير السلة إلى العرض
-        return view('cart.index', compact('cart'));
-    }
-
-    /**
-     * يضيف منتجاً جديداً إلى السلة أو يزيد الكمية إذا كان موجوداً.
-     */
-    public function add(Request $request, Product $product)
-    {
-        // 1. استرجاع السلة الحالية
-        $cart = session()->get('cart', []);
-        
-        // 2. المفتاح في السلة هو ID المنتج
-        $productId = $product->id;
-        $qty = 1; // يمكن جعلها $request->qty إذا كان هناك حقل كمية
-
-        // 3. التحقق مما إذا كان المنتج موجوداً بالفعل في السلة
-        if (isset($cart[$productId])) {
-            // إذا كان موجوداً، نزيد الكمية
-            $cart[$productId]['qty'] += $qty;
+        if (isset($cart[$id])) {
+            $newQty = $cart[$id]['qty'] + $qty;
+            $cart[$id]['qty'] = min($newQty, $product->qty); // لا تتجاوز الـ stock
         } else {
-            // إذا لم يكن موجوداً، نضيفه
-            $cart[$productId] = [
-                "id" => $product->id,
-                "name" => $product->name,
-                "price" => $product->price,
-                "qty" => $qty,
-                // يمكنك إضافة حقول أخرى مثل 'image'
+            $cart[$id] = [
+                'id'    => $product->id,
+                'name'  => $product->name,
+                'price' => $product->price,
+                'image' => $product->image,
+                'qty'   => $qty,
             ];
         }
 
-        // 4. حفظ مصفوفة السلة المحدثة في الجلسة
         session()->put('cart', $cart);
-        //dd($cart);  
-        // 5. إرجاع المستخدم مع رسالة نجاح
-        return redirect()->back()->with('success', 'تم إضافة المنتج إلى السلة بنجاح!');
+
+        return back()->with('success', __('cart.added_successfully'));
     }
 
-    public function update(Request $request, $id)
+    public function index(): View
     {
-        $cart = session()->get('cart');
+        $cart  = session()->get('cart', []);
+        $total = collect($cart)->sum(fn($item) => $item['price'] * $item['qty']);
 
-        if(isset($cart[$id])) {
-            $cart[$id]['qty'] = $request->qty;
+        return view('cart.index', compact('cart', 'total'));
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $request->validate([
+            'qty' => ['required', 'integer', 'min:1'],
+        ]);
+
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$id])) {
+            $cart[$id]['qty'] = (int) $request->qty;
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'تم تحديث الكمية بنجاح!');
+        return back()->with('success', __('cart.updated_successfully'));
     }
-    
-    /**
-     * يزيل المنتج من السلة.
-     */
-    public function remove($id)
+
+    public function remove($id): RedirectResponse
     {
-        $cart = session()->get('cart');
+        $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) {
-            unset($cart[$id]);
-            session()->put('cart', $cart);
+        unset($cart[$id]);
+        session()->put('cart', $cart);
+
+        return back()->with('success', __('cart.removed_successfully'));
+    }
+*/
+
+public function __construct(private CartService $cartService) {}
+
+    public function add(Request $request, Product $product): RedirectResponse
+    {
+        $request->validate([
+            'qty' => ['required', 'integer', 'min:1', "max:{$product->qty}"],
+        ]);
+
+        try {
+            $this->cartService->add($product, (int) $request->qty);
+            return back()->with('success', __('cart.added_successfully'));
+        } catch (InvalidArgumentException $e) {
+            return back()->with('error', $e->getMessage());
         }
+    }
 
-        return redirect()->back()->with('success', 'تم حذف المنتج من السلة.');
+    public function index(): View
+    {
+        $cartItems = $this->cartService->get();
+        $total     = $cartItems->sum(fn($item) => $item['price'] * $item['qty']);
+
+        return view('cart.index', compact('cartItems', 'total'));
     }
 }

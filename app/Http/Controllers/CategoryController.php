@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use App\Models\Product;
+
 
 class CategoryController extends Controller
 {
@@ -34,9 +37,18 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Category $category): View
     {
-        //
+        // استدعاء المنتجات الرائجة الخاصة بهذا القسم فقط من قاعدة البيانات
+        $trendingProducts = $category->products->trend('1')
+            //->trend('1') // Assuming 'trend' is a scope defined in the Product model
+            ->latest()
+            ->cursorPaginate(5);
+
+        return view('site.category.show', [
+            'category' => $category,
+            'products' => $trendingProducts,
+        ]);
     }
 
     /**

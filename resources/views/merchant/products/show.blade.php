@@ -1,13 +1,14 @@
-<x-app-layout>
+<x-merchant-layout>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <table class="table-auto w-full">
                     <x-slot name="header">
-                        <x-nav-link :href="route('merchant.dashboard')" :active="request()->routeIs('merchant.dashboard')">
-                            {{ __('Back to Dashboard') }}
+                        <x-nav-link :href="route('merchant.dashboard')"
+                            :active="request()->routeIs('merchant.dashboard')">
+                            {{ __('merchant.Back_to_Dashboard') }}
                         </x-nav-link>
-                        
+
                     </x-slot>
                     <thead>
                         <tr>
@@ -27,7 +28,7 @@
             </div>
         </div>
     </div>
-    
 
 
-</x-app-layout>
+
+</x-merchant-layout>

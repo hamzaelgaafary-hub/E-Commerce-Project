@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Review;
+use App\Models\Blog;
 
 
 class User extends Authenticatable
@@ -29,8 +30,10 @@ class User extends Authenticatable
         'phone',
         'location',
         'password',
-        'role',
+        'role_id',
     ];
+    
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -78,4 +81,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+    /**
+     * Get the blogs in this category.
+     */
+    public function blogs(): HasMany
+    {
+        return $this->hasMany(Blog::class);
+    }   
 }

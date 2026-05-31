@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Illuminate\Support\Facades\Auth;
 
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(), 
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], 
+    function() 
 {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 
@@ -34,9 +37,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
     //cart routes
         Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-        Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
-        Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
-        Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+
+        // الـ route مفتوح للجميع (guest و auth) 
+        //عشان نقدر نضيف منتجات للعربة قبل ما يسجل الدخول من غير ما يعمل مشكلة لو حصل ولوجين قبل ما يعمل انهاء السله
+        Route::post('/cart/{product}/add', [CartController::class, 'add'])->name('cart.add');
+
+        Route::middleware('auth')->group(function () {
+            Route::delete('/cart/{id}/remove', [CartController::class, 'remove'])->name('cart.remove');
+            Route::patch('/cart/{id}/update', [CartController::class, 'update'])->name('cart.update');
+        });        //Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 
     //checkout routes
         Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
@@ -57,9 +66,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
             Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
             Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');      
         });
-
-
-require __DIR__.'/auth.php';
-
-
+        require __DIR__.'/auth.php';
 });
+
+

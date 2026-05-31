@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\category;
+use App\Models\Category;
 use App\Models\User;
 
 class Blog extends Model
@@ -25,12 +25,12 @@ class Blog extends Model
     ];
 
 
-    public function category() : BelongsTo
+    public function Category() : BelongsTo
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function user() :BelongsTo
+    public function User() :BelongsTo
     {
         return $this->belongsTo(User::class);
     }

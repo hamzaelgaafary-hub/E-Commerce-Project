@@ -79,36 +79,51 @@
                             <!-- Top Right -->
                             <div class="right-content">
                                 <ul class="list-main">
-                                    <li><i class="ti-location-pin"></i> Store location</li>
-                                    <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+                                    <li>
+                                        <!-- Language Selector-->
+                                        <div><i class="ti-world"></i> {{ __('layout.choose_language') }}</div>
+                                        <select id="language-select" onchange="location = this.value;" 
+                                            style="background: transparent; border: none; color: #fff; font-size: 14px; cursor: pointer;">
+                                            
+                                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                    <option value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], false) }}" 
+                                                                                    {{ app()->getLocale() == $localeCode ? 'selected' : '' }}>
+                                                        {{ $properties['native'] }}
+                                                    </option>
+                                                @endforeach
+                                        </select>
+                                    </li>
+                                    <li><i class="ti-alarm-clock"></i> <a href="#">{{ __('layout.daily_deal') }}</a></li>
                                     @auth
                                         @if (Auth::user()->role_id == 2)
-                                            <li><i class="ti-user"></i> <a href="{{ route('merchant.dashboard') }}">Merchant Dashboard</a></li>
+                                            <li><i class="ti-user"></i> <a href="{{ route('merchant.dashboard') }}">{{__('layout.Merchant_Dashboard') }}</a></li>
                                         @elseif (Auth::user()->role_id == 3)
-                                            <li><i class="ti-user"></i> <a href="{{ route('dashboard') }}">Customer Dashboard</a></li>
+                                            <li><i class="ti-user"></i> <a href="{{ route('dashboard') }}">{{__('layout.Customer_Dashboard') }}</a></li>
                                         @elseif (Auth::user()->role_id == 1)
-                                            <li><i class="ti-user"></i> <a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                            <li><i class="ti-user"></i> <a href="{{ route('admin.dashboard') }}">{{__('layout.Admin_Dashboard') }}</a></li>
                                         @endif
 
                                         <li>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                                                    <i class="ti-power-off"></i> Logout
+                                                    <i class="ti-power-off"></i> {{ __('layout.logout') }}
                                                 </a>
                                             </form>
                                         </li>
                                     @else
                                         <li><a href="{{ route('login') }}" class="inline-block px-3 py-1 text-sm border border-transparent hover:border-gray-300 rounded-sm">
-                                            <i class="ti-user"></i> Log in
+                                            <i class="ti-user"></i> {{ __('layout.login') }}
                                         </a></li>
                                         @if (Route::has('register'))
                                             <li><a href="{{ route('register') }}" class="inline-block px-3 py-1 text-sm border border-transparent hover:border-gray-300 rounded-sm">
-                                                <i class="fa-solid fa-plus"></i> Register
+                                                <i class="fa-solid fa-plus"></i> {{ __('layout.register') }}
                                             </a></li>
                                         @endif
                                     @endauth
                                 </ul>
+                                
+
                             </div>
                             <!-- End Top Right -->
                         </div>
@@ -133,7 +148,7 @@
                                 <!-- Search Form -->
                                 <div class="search-top">
                                     <form class="search-form">
-                                        <input type="text" placeholder="Search here..." name="search">
+                                        <input type="text" placeholder="{{ __('layout.search_here') }}" name="search">
                                         <button value="search" type="submit"><i class="ti-search"></i></button>
                                     </form>
                                 </div>
@@ -149,12 +164,12 @@
                                     <form action="{{ url('search') }}" method="GET">
                                         <div class="search-bar">
                                             <select>
-                                                <option selected="selected">All Categories</option>
+                                                <option selected="selected">{{ __('layout.all_categories') }}</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
-                                            <input type="text" name="query" placeholder="Search products here..." value="{{ request('query') }}">
+                                            <input type="text" name="query" placeholder="{{ __('layout.search_products_here') }}" value="{{ request('query') }}">
                                             <button class="btnn"><i class="ti-search"></i></button>
                                         </div>
                                     </form>
@@ -168,7 +183,7 @@
                                     <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="sinlge-bar">
-                                    <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                    <a href="{{ route('profile.edit') }}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="sinlge-bar shopping">
                                     <a href="#" class="single-icon"><i class="ti-bag"></i> 
@@ -179,29 +194,58 @@
                                     <!-- Shopping Item -->
                                     <div class="shopping-item">
                                         <div class="dropdown-cart-header">
-                                            <span>{{ $cartCount }} Items</span>
-                                            <a href="{{ route('cart.index') }}">View Cart</a>
+                                            <span>{{ $cartCount }} {{ __('layout.Items') }}</span>
+                                            <a href="{{ route('cart.index') }}">{{ __('layout.View Cart') }}</a>
                                         </div>
                                         <ul class="shopping-list">
-                                            @foreach($cart as $id => $details)
+                                            @forelse($cart as $id => $details)
                                             <li>
-                                                <a href="#" onclick="event.preventDefault(); document.getElementById('cart-item-{{ $id }}').submit()" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                                <form id="cart-item-{{ $id }}" action="{{ route('cart.remove', $id) }}" method="POST" style="display: none;">
+                                                <!-- Remove Item -->
+                                                <a href="#" onclick="event.preventDefault(); 
+                                                    document.getElementById('cart-item-{{ $id }}').submit()" 
+                                                    class="remove" title="Remove this item">
+                                                        <i class="fa fa-remove"></i></a>
+                                                <form id="cart-item-{{ $id }}" action="{{ route('cart.remove', $id) }}" 
+                                                    method="POST" 
+                                                    style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
-                                                <a class="cart-img" href="#"><img src="https://placehold.co/70x70" alt="#"></a>
-                                                <h4><a href="{{ route('site.product', $id) }}">{{ $details['name'] }}</a></h4>
-                                                <p class="quantity">{{ $details['qty'] }}x - <span class="amount">{{ $details['price'] }}</span></p>
+                                                                                    
+                                                {{-- Image --}}
+                                                <a class="cart-img" href="{{ route('site.product', $id) }}">
+                                                    <img src="{{ $details['image'] && $details['image'] !== '0'
+                                                        ? asset('storage/' . $details['image'])
+                                                        : asset('images/placeholder.webp') }}"
+                                                            alt="{{ $details['name'] }}"
+                                                            width="70" height="70">
+                                                </a>
+                                                <h4>
+                                                    <a href="{{ route('site.product', $id) }}">
+                                                        {{ Str::limit($details['name'], 20) }}
+                                                    </a>
+                                                </h4>
+                                                <p class="quantity">
+                                                    {{ $details['qty'] }}x - 
+                                                    <span class="amount">
+                                                        ${{ number_format($details['price'] * $details['qty'], 2) }}
+                                                    </span>
+                                                </p>
                                             </li>
-                                            @endforeach
+                                            @empty
+                                                <li class="text-center py-3">{{ __('cart.empty') }}</li>
+                                            @endforelse
                                         </ul>
                                         <div class="bottom">
                                             <div class="total">
-                                                <span>Total</span>
-                                                <span class="total-amount">{{ $total }}</span>
+                                                <span>{{ __('layout.Total') }}</span>
+                                                <span class="total-amount">
+                                                    ${{ number_format($total, 2) }}
+                                                </span>
                                             </div>
-                                            <a href="{{ route('checkout.index') }}" class="btn animate">Checkout</a>
+                                            <a href="{{ route('checkout.index') }}" class="btn animate">
+                                                {{ __('layout.checkout') }}
+                                            </a>
                                         </div>
                                     </div>
                                     <!--/ End Shopping Item -->
@@ -221,7 +265,7 @@
                                 
             <!--side bar -->
                                 <div class="all-category">
-                                    <h3 class="cat-heading"><a href="{{ route('index') }}">HOME PAGE</a></h3>
+                                    <h3 class="cat-heading"><a href="{{ route('index') }}">{{ __('layout.home_page') }}</a></h3>
                                 </div>
                             </div>
             <!-- end side bar-->
@@ -231,25 +275,29 @@
                                         <div class="navbar-collapse">
                                             <div class="nav-inner">
                                                 <ul class="nav main-menu menu navbar-nav">
-                                                        <li class="active"><a href="{{ route('site.products') }}">Categories<i class="ti-angle-down"></i></a>
+                                                        <li class="active"><a href="{{ route('site.products') }}">{{ __('layout.categories') }}<i class="ti-angle-down"></i></a>
                                                             <ul class="dropdown">
-                                                                <li><a href="{{ route('site.products') }}" class="active"> All Products</a></li>
+                                                                <li><a href="{{ route('site.products') }}" class="active"> {{ __('layout.All_Products') }}</a></li>
                                                                 @foreach($categories as $category)
                                                                 <li><a href="{{ route('site.category', $category->id) }}">{{ $category->name }}</a></li>
                                                                 @endforeach
                                                             </ul>
-                                                        <li><a href="#">Blogs & Posts<i class="ti-angle-down"></i></a>
+                                                        <li><a href="#">{{ __('layout.Blogs_&_Posts') }}<i class="ti-angle-down"></i></a>
                                                             <ul class="dropdown">
-                                                                <li><a href="{{ route('site.blogs.index') }}">All blogs</a></li>
+                                                                <li><a href="{{ route('site.blogs.index') }}"> {{ __('layout.All_Blogs') }}</a></li>
+                                                                    @foreach ($categories as $category)
+                                                                        <li><a href="{{ route('site.blogs.index', $category->slug) }}">{{ $category->name }}</a></li>
+                                                                    @endforeach
                                                             </ul>
                                                         </li>
-                                                        <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
+                                                        <li><a href="#">{{ __('layout.Shop') }}<i class="ti-angle-down"></i><span class="new">{{ __('layout.New') }}</span></a>
                                                             <ul class="dropdown">
-                                                                <li><a href="#">Cart</a></li>
-                                                                <li><a href="#">Checkout</a></li>
+                                                                <li><a href="{{ route('cart.index') }}"> {{ __('layout.cart') }}</a></li>
+                                                                <li><a href="{{ route('checkout.index') }}"> {{ __('layout.checkout') }}</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="#">Contact Us</a></li>
+                                                        <li><a href="{{ route('site.contact') }}"> {{ __('layout.contact') }}</a></li>
+                                                        <li><a href="{{ route('site.about') }}"> {{ __('layout.about_us') }}</a></li>
                                                     </ul>
                                             </div>
                                         </div>
@@ -281,7 +329,11 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="{{ route('index') }}"><img src="{{ asset('site/images/logo2.png') }}" alt="#"></a>
+								<a href="{{ route('index') }}">
+                                    <img src="{{ asset('site/images/logo2.png') }}" 
+                                    class="rounded-full text-gray-500 shadow-md" style="width: 430px; height: 200px;"
+                                    alt="logo">
+                                </a>
 							</div>
 							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
@@ -293,11 +345,11 @@
 						<div class="single-footer links">
 							<h4>Information</h4>
 							<ul>
-								<li><a href="{{ route('index')}}">Home</a></li>
-								<li><a href="{{ route('site.products')}}">products</a></li>
-								<li><a href="{{route('site.about')}}">About Us</a></li>
-								<li><a href="{{route('site.products')}}">Our Products</a></li>
-								<li><a href="{{route('site.contact')}}">Contact Us</a></li>
+								<li><a href="{{ route('index')}}">{{ __('layout.home_page') }}</a></li>
+								<li><a href="{{ route('site.products')}}">{{ __('layout.products') }}</a></li>
+								<li><a href="{{ route('site.about')}}">{{ __('layout.about_us') }}</a></li>
+								<li><a href="{{ route('site.products')}}">{{ __('layout.products') }}</a></li>
+								<li><a href="{{ route('site.contact')}}">{{ __('layout.contact') }}</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -305,13 +357,13 @@
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Customer Service</h4>
+							<h4>{{ __('layout.customer_service') }}</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
-								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
+								<li><a href="#">{{ __('layout.payment_methods') }}</a></li>
+								<li><a href="#">{{ __('layout.money_back') }}</a></li>
+								<li><a href="#">{{ __('layout.returns') }}</a></li>
+								<li><a href="#">{{ __('layout.shipping') }}</a></li>
+								<li><a href="#">{{ __('layout.privacy_policy') }}</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -319,13 +371,13 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>{{ __('layout.get_in_touch') }}</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
 									<li>NO. 342 - London Oxford Street.</li>
 									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
+									<li>info@gafaaryshop.com</li>
 									<li>+032 3456 7890</li>
 								</ul>
 							</div>
@@ -349,7 +401,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-12">
 							<div class="left">
-								<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+								<p>{{ __('layout.copyright') }}</p>
 							</div>
 						</div>
 						<div class="col-lg-6 col-12">

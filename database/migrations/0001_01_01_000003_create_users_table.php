@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('location')->nullable();
-            // We set default(3) assuming 'user' role is ID 3
-            $table->foreignId('role_id')->default(3)->constrained('roles');
+            $table->foreignId('role_id')->default(3)->onDelete('cascade')->constrained('roles');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

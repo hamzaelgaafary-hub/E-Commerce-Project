@@ -1,0 +1,163 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Main Language Lines - Turkish
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used throughout the application for various
+    | messages that we need to display to the user.
+    |
+    */
+
+    // Home Page
+    'hero_title' => 'EN İYİLERDE %50\'YE VARAN İNDİRİM',
+    'hero_description' => 'En iyi ürünleri en iyi fiyatlarla bulun',
+    'shop_now' => 'Şimdi Alışveriş Yap!',
+    'special_offer' => 'Özel Teklif Öğesi',
+    'up_to' => 'Kadar',
+    'shop_now_small' => 'Şimdi Alışveriş Yap',
+    'free_shipping' => 'Ücretsiz Kargo',
+    'orders_over' => '100$ üzerindeki siparişler',
+    'free_return' => 'Ücretsiz İade',
+    'within_days' => '30 gün içinde iade',
+    'secure_payment' => 'Güvenli Ödeme',
+    'secure_payment_desc' => '%100 güvenli ödeme',
+    'best_price' => 'En İyi Fiyat',
+    'guaranteed_price' => 'Garanti edilmiş fiyat',
+    'newsletter' => 'Haber Bülteni',
+    'newsletter_desc' => 'Haber bültenimize abone olun ve ilk satın alma işleminizde %10 indirim kazanın',
+    'email_placeholder' => 'E-posta adresiniz',
+    'subscribe' => 'Abone Ol',
+    'template_title' => 'Eshop Ücretsiz Lite',
+    'template_desc' => 'Şu anda Eshop\'un ücretsiz lite sürümünü kullanıyorsunuz.',
+    'template_note' => 'Lütfen tüm sayfaları, özellikleri ve ticari lisansı almak için şablonun tam sürümünü satın alın',
+    'buy_now' => 'Şimdi Satın Al!',
+
+    // Products Page
+    'trending_item' => 'Trend Ürün',
+    'all_products' => 'Tüm Ürünler',
+    'quick_shop' => 'Hızlı Alışveriş',
+    'add_to_wishlist' => 'İstek Listesine Ekle',
+    'compare' => 'Karşılaştır',
+    'add_to_cart' => 'Sepete Ekle',
+    'no_trending_products' => 'Bu kategoride trend ürün bulunamadı.',
+    'add_to_compare' => 'Karşılaştırmaya Ekle',
+
+    // Cart Page
+    'shopping_cart' => 'Alışveriş Sepeti',
+    'product' => 'Ürün',
+    'price' => 'Fiyat',
+    'quantity' => 'Miktar',
+    'subtotal' => 'Ara Toplam',
+    'action' => 'Eylem',
+    'update' => 'Güncelle',
+    'total' => 'Toplam',
+    'proceed_to_checkout' => 'Ödemeye Geç',
+    'cart_empty' => 'Alışveriş sepeti şu anda boş.',
+
+    // Checkout Page
+    'checkout' => 'Ödeme',
+    'shipping_information' => 'Kargo Bilgileri',
+    'first_name' => 'Ad',
+    'last_name' => 'Soyad',
+    'email' => 'E-posta',
+    'phone' => 'Telefon',
+    'address' => 'Adres',
+    'city' => 'Şehir',
+    'payment_method' => 'Ödeme Yöntemi',
+    'cash_on_delivery' => 'Kapıda Ödeme',
+    'confirm_order_and_pay' => 'Siparişi Onayla ve Öde',
+    'login' => 'Giriş Yap',
+    'cancel' => 'İptal',
+    'order_summary' => 'Sipariş Özeti',
+    'shipping_cost' => 'Kargo Ücreti',
+    'final_total' => 'Son Toplam',
+
+    // About/Contact Pages
+    'get_in_touch' => 'İletişime geçin',
+    'write_us_message' => 'Bize bir mesaj yazın',
+    'your_name' => 'Adınız',
+    'your_subjects' => 'Konularınız',
+    'your_message' => 'Mesajınız',
+    'send_message' => 'Mesaj Gönder',
+    'call_us_now' => 'Şimdi arayın:',
+    'our_address' => 'Adresimiz:',
+
+    // Search Page
+    'search_products_placeholder' => 'Ürünleri burada ara...',
+    'search_results_for' => 'Arama sonuçları:',
+    'found_results' => ':count sonuç bulundu.',
+    'popular' => 'Popüler',
+    'regular' => 'Normal',
+    'quick_view' => 'Hızlı Görüntüle',
+    'wishlist' => 'İstek Listesi',
+    'currency' => 'AED',
+    'no_product_found' => '":query" ile eşleşen ürün bulunamadı.',
+    'enter_search_word' => 'Lütfen ürünleri aramak için bir kelime girin.',
+
+    // Blogs Page
+    'by' => 'Tarafından',
+    'comment' => 'Yorum',
+    'tags' => 'Etiketler:',
+    'search_here' => 'Burada Ara...',
+    'blog_categories' => 'Blog Kategorileri',
+    'recent_blogs' => 'Son bloglar',
+
+    // Auth Pages
+    'password_field' => 'Şifre',
+    'remember_me' => 'Beni hatırla',
+    'forgot_password' => 'Şifrenizi mi unuttunuz?',
+    'log_in' => 'Giriş yap',
+    'register' => 'Hesap oluştur',
+    'name' => 'İsim',
+    'confirm_password' => 'Şifreyi Onayla',
+
+    // Layout
+    'home_page' => 'ana sayfa',
+    'shop' => 'mağaza',
+    'blogs_posts' => 'bloglar ve gönderiler',
+    'contact' => 'iletişime geçin',
+    'logout' => 'çıkış yap',
+    'dashboard' => 'kontrol paneli',
+    'cart' => 'sepetteki ürünler',
+    'orders' => 'siparişler',
+    'profile' => 'Profil bilgileri',
+    'admin_panel' => 'yönetici paneli',
+    'welcome' => 'Çevrimiçi mağazamıza hoş geldiniz',
+    'products' => 'ürünler',
+    'categories' => 'kategoriler',
+    'blog' => 'blog',
+    'about_us' => 'hakkımızda',
+    'all_blogs' => 'tüm bloglar',
+    'all_categories' => 'tüm kategoriler',
+    'search' => 'arama',
+    'items' => 'öğeler',
+    'view_cart' => 'sepetteki ürünleri görüntüle',
+    'my_account' => 'hesabım',
+    'my_orders' => 'siparişlerim',
+    'my_profile' => 'profilim',
+    'customer_dashboard' => 'müşteri kontrol paneli',
+    'merchant_dashboard' => 'satıcı kontrol paneli',
+    'admin_dashboard' => 'yönetici kontrol paneli',
+    'user_dashboard' => 'kullanıcı kontrol paneli',
+    'welcome_to_dashboard' => 'kontrol panelinize hoş geldiniz',
+    'information' => 'bilgiler',
+    'phone' => 'Telefon',
+    'edit_profile' => 'Profili Düzenle',
+    'change_password' => 'Şifre Değiştir',
+    'old_password' => 'Eski Şifre',
+    'new_password' => 'Yeni Şifre',
+    'save' => 'Kaydet',
+    'customer_service' => 'Müşteri Hizmetleri',
+    'payment_methods' => 'Ödeme Yöntemleri',
+    'money_back' => 'Para iadesi',
+    'returns' => 'İadeler',
+    'shipping' => 'Nakliye',
+    'privacy_policy' => 'Gizlilik Politikası',
+    'get_in_touch' => 'İletişime Geçin',
+    'copyright' => 'Telif Hakkı © 2020 Wpthemesgrid - Tüm Hakları Saklıdır.',
+    'choose_language' => 'Dil Seç',
+    'daily_deal' => 'Günlük fırsat',
+];
