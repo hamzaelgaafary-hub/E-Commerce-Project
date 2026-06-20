@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\View\View;
 
 class siteController extends Controller
 {
@@ -18,7 +19,10 @@ class siteController extends Controller
     */
     public function index()
     {
-        $products = Product::with('category')->latest()->cursorPaginate(5);
+        $products = Product::with('category')
+                    ->latest()
+                    ->cursorPaginate(5);
+                    
         //$categories = Category::all();
         //dd($products);
         //dd($categories);
@@ -56,13 +60,19 @@ class siteController extends Controller
     }
 
     /*
-    Category page
+    ***********Category page
     */
-    public function category($id)
+    public function category(Category $category): View
     {
-        $categories = Category::all();
-        $products = Product::where('category_id', $id)->with('category')->latest()->cursorPaginate(5);
-        
-        return view('site.category', compact('products', 'categories'));
+
+        //$categories = Category::all();
+        $products = Product::with('category')
+            ->where('category_id', $category->id)
+            ->latest()
+            ->cursorPaginate(5);
+        //dd($products);
+        //dd($categories);
+        return view('site.category.show', compact('products'));
     }
 }
+

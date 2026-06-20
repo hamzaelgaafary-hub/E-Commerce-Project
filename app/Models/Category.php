@@ -11,7 +11,7 @@ class Category extends Model
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
     use HasFactory;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['id','name', 'description'];
 
     /**
      * Get the products in this category.

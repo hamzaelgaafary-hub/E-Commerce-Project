@@ -22,7 +22,9 @@ Route::group([
         Route::get('/', [siteController::class, 'index'])->name('index');
         Route::get('/contact', [siteController::class, 'contact'])->name('site.contact');
         Route::get('/about', [siteController::class, 'about'])->name('site.about');
-        Route::get('/category/{id}', [siteController::class, 'category'])->name('site.category');
+
+        
+        Route::get('/category/{category}', [siteController::class, 'category'])->name('site.category');
 
     //blogs Routes
         Route::get('/blogs', [blogsController::class, 'index'])->name('site.blogs.index');

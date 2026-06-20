@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        //dd($categories);
+        return view('site.categories.index', compact('categories'));
     }
 
     /**
@@ -40,8 +42,9 @@ class CategoryController extends Controller
     public function show(Category $category): View
     {
         // استدعاء المنتجات الرائجة الخاصة بهذا القسم فقط من قاعدة البيانات
-        $trendingProducts = $category->products->trend('1')
-            //->trend('1') // Assuming 'trend' is a scope defined in the Product model
+        $category->load('products');
+        $trendingProducts = $category->products()
+            ->trend('1') // Assuming 'trend' is a scope defined in the Product model
             ->latest()
             ->cursorPaginate(5);
 

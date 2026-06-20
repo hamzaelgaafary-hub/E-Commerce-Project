@@ -30,12 +30,10 @@ class Product extends Model
         'user_id'
     ];
     protected $casts = [
-            'trend' => 'boolean',
+            //'trend' => 'boolean',
             'is_active' => 'boolean',
             'price' => 'decimal:2',
     ];
-
-
 
     // Scopes تتوافق مع بياناتك الفعلية
     public function scopeTrending(Builder $query): Builder
@@ -48,13 +46,13 @@ class Product extends Model
         return $query->where('qty', '>', 0);  // ← assuming 'qty' is the stock quantity
     }
 
-    public function scopeActive(Builder $query): void
+    public function scopeActive(Builder $query): Builder
     {
-        $query->where('is_active', true);
+        return $query->where('is_active', true);
     }
-    public function scopeRegular(Builder $query): void
+    public function scopeRegular(Builder $query): Builder
     {
-        $query->where('trend', false);
+        return $query->where('trend', false);
     }
 
 

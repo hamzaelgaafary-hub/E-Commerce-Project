@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
+    /**
+     * @var array<class-string, array<class-string>>
+     */
     protected $listen = [
         Login::class => [MergeCartOnLogin::class],
     ];
